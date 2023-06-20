@@ -10,23 +10,23 @@ import javax.persistence.id;//Chama a biblioteca para poder fazer uma PK
 public class User{
     @id //Cria a chave primaria = PRIMARY KEY(id)
     @GeneratedValue(strategy = GenerationType.IDENTITY) // faz com que a PK não seja nula e vai ser sequencial, sendo único e não fazendo dois id's iguais pra não dar erro
-    private int id;
+    private long id;
       
-    @Column(nullable = false, unique = true) //NÃO deixa ser nulo. Tenho que fazer pra cada entidade se quiser que todas NÃO sejam nulas. EEEEE FALA QUE ELE TEM QUE SER ÚNICO!
+    @Column(name="email", nullable = false, unique = true) //NÃO deixa ser nulo. Tenho que fazer pra cada entidade se quiser que todas NÃO sejam nulas. EEEEE FALA QUE ELE TEM QUE SER ÚNICO!
         private String email;
-    @Column(nullable = false)
+    @Column(name="first_name", nullable = false)
         private String first_name;
-    @Column(nullable = false)
+    @Column(name="last_name", nullable = false)
         private String last_name;
-    @Column(nullable = false)
+    @Column(name="password", nullable = false)
         private String password;
-    @Column(nullable = false)
+    @Column(name="code_verify", nullable = false)
         private String code_verify;
-    @Column(nullable = false)
+    @Column(name="data_register", nullable = false)
         private String data_register;
-    @Column(nullable = false)
+    @Column(name="is_superuser", default = false, nullable = false)
         private boolean is_superuser;
-    @Column(nullable = false)
+    @Column(name="is_verify", default = false, nullable = false)
         private boolean is_verify;
       
       
@@ -43,6 +43,20 @@ public class User{
         this.setIs_superuser(is_superuser);
         this.setIs_verify(is_verify);
     } 
+
+    public User(String email, String first_name, String last_name, String password, String code_verify, String data_register){
+        this.setEmail(email);
+        this.setFirst_name(first_name);
+        this.setLast_name(last_name);
+        this.setPassword(password);
+        this.setCode_verify(code_verify);
+        this.setData_register(data_register);
+    } 
+
+
+    public long getId() {
+        return id;
+    }
 
     public String getEmail() {
         return email;
