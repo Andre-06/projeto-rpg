@@ -1,4 +1,4 @@
-/*package com.app.elixir.orm;
+package com.app.elixir.models;
 import javax.persistence.Entity; //Deixa criar entidade
 import javax.persistence.GEneratedValue; //Chama a biblioteca  Generated value
 import javax.persistence.GenerationType;//Chama a biblioteca GenerationType
@@ -6,7 +6,7 @@ import javax.persistence.id;//Chama a biblioteca para poder fazer uma PK
 
 
 @Entity //Denomina que User é uma tabela
-@Table = (name "Usuário") // Muda o nome da tabela
+@Table = (name "user") // Muda o nome da tabela
 public class User{
     @id //Cria a chave primaria = PRIMARY KEY(id)
     @GeneratedValue(strategy = GenerationType.IDENTITY) // faz com que a PK não seja nula e vai ser sequencial, sendo único e não fazendo dois id's iguais pra não dar erro
@@ -18,12 +18,13 @@ public class User{
         private String first_name;
     @Column(nullable = false)
         private String last_name;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
         private String password;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
         private String code_verify;
     @Column(nullable = false)
         private String data_register;
+    @Column(nullable = false)
         private boolean is_superuser;
     @Column(nullable = false)
         private boolean is_verify;
@@ -98,6 +99,4 @@ public class User{
     public void setIs_verify(boolean is_verify) {
         this.is_verify = is_verify;
     }
-    }
 }
-*/
